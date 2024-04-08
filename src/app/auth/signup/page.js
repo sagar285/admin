@@ -5,6 +5,7 @@ import { Switch } from '@headlessui/react'
 import axios from 'axios'
 import {useRouter} from "next/navigation"
 import { useAuthentication } from '@/context/UserContext'
+import api from '@/components/axios'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -29,7 +30,7 @@ export default function Example() {
       seterror(true)
       return;
     }
-       const res = await axios.post("http://localhost:8000/api/v1/admin/register",user);
+       const res = await api.post("/admin/register",user);
        if(res?.data?.adminexist){
         alert("this email already exist pls login")
         router.push("/auth/login")

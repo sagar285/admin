@@ -32,7 +32,7 @@ export default function Example() {
       seterror(true)
       return;
     }
-       const res = await axios.post("http://localhost:8000/api/v1/admin/login",{email:user.email,password:user.password});
+       const res = await axios.post("/admin/login",{email:user.email,password:user.password});
        if(res.data.success){
         setisuser(true)
           localStorage.setItem("user",res.data.user)
