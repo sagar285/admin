@@ -27,9 +27,7 @@ export default function Example() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [surveylist,setsurveylist]=useState([])
   const router =useRouter()
-  if(!isuser){
-     router.push("/auth/signup") 
-  }
+ 
 
   const getallsurveylist = async()=>{
     const res = await api.get("/survey/allSurveys")
@@ -46,6 +44,9 @@ export default function Example() {
       if(isuser){
         getallsurveylist()
       }
+      if(!isuser){
+        router.push("/auth/signup") 
+     }
   },[])
 
   return (

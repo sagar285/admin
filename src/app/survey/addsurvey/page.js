@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import IO from '@/components/IO'
 import Output from '@/components/Output'
@@ -6,9 +6,10 @@ import api from '@/components/axios'
 import { useAuthentication } from '@/context/UserContext'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function AddSurvey() {
+
     const {isuser,setisuser,input,output} =useAuthentication()
     const router =useRouter()
     const [survey,setsurvey]=useState({
@@ -17,11 +18,21 @@ export default function AddSurvey() {
     instructions:"",
     pay:0,
     qualification:"",
-    token:localStorage.getItem("token")})
+    token:""})
     const [error,seterror]=useState(false)
-    if(!isuser){
-       router.push("/auth/login")
-    }
+   
+
+
+    useEffect(()=>{
+      const token =localStorage.getItem("token")
+      if(token){
+      setsurvey({...survey,token:token})
+      }
+    },[])
+
+
+
+
     const submitdata =async(e)=>{
         e.preventDefault()
         try {
