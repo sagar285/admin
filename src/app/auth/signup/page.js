@@ -151,7 +151,7 @@ export default function Example() {
           onClick={submitdata}
           className='w-full'
           >
-          Let's talk
+          Lets talk
           </button>
         </div>
       </form>
