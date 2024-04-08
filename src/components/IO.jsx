@@ -34,7 +34,6 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { useinputOutputContext } from './IOContext'
 import { useAuthentication } from '@/context/UserContext'
 
 const DataType = [
