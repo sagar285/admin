@@ -5,6 +5,7 @@ import { Switch } from '@headlessui/react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation';
 import { useAuthentication } from '@/context/UserContext'
+import api from '@/components/axios'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -32,7 +33,7 @@ export default function Example() {
       seterror(true)
       return;
     }
-       const res = await axios.post("/admin/login",{email:user.email,password:user.password});
+       const res = await api.post("/admin/login",{email:user.email,password:user.password});
        if(res.data.success){
         setisuser(true)
           localStorage.setItem("user",res.data.user)
